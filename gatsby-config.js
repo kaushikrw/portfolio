@@ -5,16 +5,32 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID
 
 module.exports = {
   siteMetadata: {
-    // You can overwrite values here that are used for the SEO component
-    // You can also add new values here to query them like usual
-    // See all options: https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-cara/gatsby-config.js
-    siteTitleAlt: `Cara - Gatsby Starter Portfolio`,
+    // Used for the title template on pages other than the index site
+    siteTitle: `Kaushik Meesala - Portfolio`,
+    // Default title of the page
+    siteTitleAlt: `Kaushik Meesala - Portfolio`,
+    // Can be used for e.g. JSONLD
+    siteHeadline: `Portfolio - Kaushik`,
+    // Will be used to generate absolute URLs for og:image etc.
+    siteUrl: `https://google.com`,
+    // Used for SEO
+    siteDescription: `Kaushik Meesala, Software Engineer`,
+    // Will be set on the <html /> tag
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/banner.jpg`,
+    // Twitter Handle
+    author: `@Kaushik`,
   },
   plugins: [
     {
       resolve: `@lekoarts/gatsby-theme-cara`,
       // See the theme's README for all available options
-      options: {},
+      options: {
+        mdx: true,
+        preset: "@theme-ui/preset-funk",
+        prismPreset: "prism-okaidia",
+      },
     },
     googleAnalyticsTrackingId && {
       resolve: `gatsby-plugin-google-analytics`,
@@ -57,5 +73,33 @@ module.exports = {
         openAnalyzer: false,
       },
     },
+    // `gatsby-plugin-sharp`,
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: `gatsby-remark-images`,
+    //         options: {
+    //           maxWidth: 590,
+    //           wrapperStyle:
+    //             'border: 5px solid red; margin-right: 0!important; margin-right: 0!important;',
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `/`,
+    //   },
+    // },
   ].filter(Boolean),
+  // flags: {
+  //   LMDB_STORE: false,
+  //   PARALLEL_SOURCING: false,
+  //   FAST_DEV: false,
+  //   DEV_SSR: false,
+  // }
 }
